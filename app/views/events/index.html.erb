@@ -1,7 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
-<%= link_to "New event", new_event_path %>
+<% if user_signed_in? %>
+  <%= link_to "New event", new_event_path %>
 <br>
+<% else %>
+  <h3>Sign in to add/edit/delete an event</h3>
+<% end %>
 
 <h1>Events</h1>
 

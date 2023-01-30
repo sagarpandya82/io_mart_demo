@@ -15,7 +15,14 @@
   <p class="alert"><%= alert %></p>
   <h1> Links </h1>
     <%= link_to 'status', statuses_path %>
+  |
     <%= link_to 'events', events_path %>
+  |
+  <% if user_signed_in? %>
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Admin sign In', new_user_session_path %>
+  <% end %>
   <hr>
   <%= yield %>
   </body>

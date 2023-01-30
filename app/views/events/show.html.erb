@@ -5,12 +5,16 @@
 <b>status: </b>
 <b><%= @event.status.name %></b>
 
+<% if user_signed_in? %>
 <div>
   <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Back to events", events_path %>
-
   <%= button_to "Destroy this event", @event, method: :delete %>
 </div>
+<% else %>
+  <h3>Sign in to edit or delete this event</h3>
+<% end %>
+<br>
+<%= link_to "Back to events", events_path %>
 
 <hr>
 
