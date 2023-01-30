@@ -24,10 +24,15 @@ class CommentsController < ApplicationController
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.event = Event.find(params[:comment][:event_id])
+    @event = Event.find(params[:comment][:event_id])
+    @comment.event = @event
+
+    status_id = Status.where(name: @comment.update_event_status ).first.id
+    @event.status_id = status_id
 
     respond_to do |format|
       if @comment.save
+        @event.save
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
@@ -40,8 +45,12 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
     @event = Event.find(params[:comment][:event_id])
+    status_id = Status.where(name: @comment.update_event_status ).first.id
+    @event.status_id = status_id
+
     respond_to do |format|
       if @comment.update(comment_params)
+        @event.save
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else

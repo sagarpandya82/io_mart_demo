@@ -20,6 +20,7 @@
     <%= form.label :update_event_status, style: "display: block" %>
     <%= form.select :update_event_status, Status.all.map(&:name), prompt: 'select'%>
   </div>
+  <br>
     <%= form.hidden_field :event_id, value: params["event_id"] %>
   <div>
     <%= form.submit %>
