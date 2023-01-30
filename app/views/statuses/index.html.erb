@@ -4,11 +4,9 @@
 
 <div id="statuses">
   <% @statuses.each do |status| %>
-    <%= render status %>
-    <p>
-      <%= link_to "Show this status", status %>
-    </p>
+    <h3><%= "Number of #{status.name} events" %></h3>
+    <%= Event.where(status_id: status.id).count %>
+    <h3>---</h3>
   <% end %>
 </div>
 
-<%= link_to "New status", new_status_path %>

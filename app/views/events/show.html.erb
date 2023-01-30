@@ -2,6 +2,8 @@
 
 <h1> Event details</h1>
 <%= render @event %>
+<b>status: </b>
+<b><%= @event.status.name %></b>
 
 <div>
   <%= link_to "Edit this event", edit_event_path(@event) %> |

@@ -8,6 +8,7 @@
 <div id="events">
   <% @events.each do |event| %>
     <%= render event %>
+    <b><%= "Status: #{event.status.name}" %></b>
     <p>
       <%= link_to "Show this event", event %>
     </p>

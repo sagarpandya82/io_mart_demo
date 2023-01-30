@@ -37,6 +37,17 @@
   </div>
 
   <div>
+    <%= form.label :resolved_time, style: "display: block" %>
+    <%= form.datetime_field :resolved_time %>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <%= form.select :status, Status.all.map {|status| [status.name, status.id]}, prompt: 'select'%>
+  </div>
+
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
