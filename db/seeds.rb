@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+status_pairs = [
+                ['Critical', 'red'],
+                ['Amber', 'amber'],
+                ['Good', 'green']
+               ]
+
+status_pairs.each do |name, color|
+  Status.create(name: name, color: color)
+end
