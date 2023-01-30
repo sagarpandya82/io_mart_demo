@@ -13,6 +13,10 @@
   <body>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+  <h1> Links </h1>
+    <%= link_to 'status', statuses_path %>
+    <%= link_to 'events', events_path %>
+  <hr>
   <%= yield %>
   </body>
 </html>

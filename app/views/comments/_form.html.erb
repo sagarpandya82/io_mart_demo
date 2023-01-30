@@ -18,9 +18,9 @@
 
   <div>
     <%= form.label :update_event_status, style: "display: block" %>
-    <%= form.text_field :update_event_status %>
+    <%= form.select :update_event_status, Status.all.map(&:name), prompt: 'select'%>
   </div>
-
+    <%= form.hidden_field :event_id, value: params["event_id"] %>
   <div>
     <%= form.submit %>
   </div>

@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1 or /comments/1.json
   def show
+    @event = @comment.event_id
   end
 
   # GET /comments/new
@@ -17,11 +18,13 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @event = @comment.event_id
   end
 
   # POST /comments or /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @comment.event = Event.find(params[:comment][:event_id])
 
     respond_to do |format|
       if @comment.save
@@ -36,6 +39,7 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
+    @event = Event.find(params[:comment][:event_id])
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
@@ -50,9 +54,9 @@ class CommentsController < ApplicationController
   # DELETE /comments/1 or /comments/1.json
   def destroy
     @comment.destroy
-
+    @event = Event.find(params[:event_id])
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to event_path(@event), notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +69,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:content, :update_event_status)
+      params.require(:comment).permit(:content, :update_event_status, :event_id)
     end
 end

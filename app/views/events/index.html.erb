@@ -1,5 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
+<%= link_to "New event", new_event_path %>
+<br>
+
 <h1>Events</h1>
 
 <div id="events">
@@ -8,7 +11,8 @@
     <p>
       <%= link_to "Show this event", event %>
     </p>
+    <hr>
   <% end %>
 </div>
 
-<%= link_to "New event", new_event_path %>
+
